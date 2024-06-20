@@ -1,5 +1,6 @@
 #ifndef __LIST_H__
 #define __LIST_H__
+#pragma once
 
 #include <stdbool.h>
 #include <stddef.h>

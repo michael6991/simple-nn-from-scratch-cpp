@@ -1,5 +1,6 @@
 #ifndef __BINSEARACH_H__
 #define __BINSEARACH_H__
+#pragma once
 
 #include <stdlib.h>
 #include <stdbool.h>

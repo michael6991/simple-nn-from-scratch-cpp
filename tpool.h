@@ -1,5 +1,6 @@
 #ifndef __TPOOL_H__
 #define __TPOOL_H__
+#pragma once
 
 #include <stdbool.h>
 #include <stddef.h>

@@ -1,11 +1,11 @@
 #ifndef __PERCEPTRON_H__
 #define __PERCEPTRON_H__
-
+#pragma once
 
 struct perceptron;
-typedef struct perceptron perceptron_t;
+typedef struct perceptron mlp_t;  // multi-layer perceptron
 
 
-perceptron_t *perc_create(bool init_random);
+mlp_t *mlp_create(bool init_random);
 
 #endif /* __PERCEPTRON_H__ */
