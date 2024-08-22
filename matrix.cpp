@@ -1,24 +1,32 @@
-#include <vector>
-#include <cstdio>
+#include "matrix.hpp"
 #include <iostream>
 
 using namespace std;
 
 
-// elements can be float/double/int
-template <class T>
-vector <vector<T> > matmul(vector<vector<T> > &A, vector<vector<T> > &B)
+// Function Defenitions
+
+// Elements can be float/double/int
+int matmul(vector<vector<float> > &A, vector<vector<float> > &B, vector<vector<float> > &C)
 {
-    if (A.empty() || B.empty() || A[0].size() != B.size()) {
-        throw invalid_argument("Invalid matrices dimensions for multiplication.");
+    if (A.empty() || B.empty() || C.empty()) {
+        cout << "Error: empty matrices given" << endl;
+        return -1;
     }
 
-    const int rowsA = A.size();
-    const int colsA = A[0].size();
-    const int colsB = B[0].size();
+    int rowsA = A.size();
+    int rowsB = B.size();
+    int rowsC = C.size();
+    int colsA = A[0].size();
+    int colsB = B[0].size();
+    int colsC = C[0].size();
 
-    // Create the resulting matrix with dimensions rowsA x colsB
-    vector<vector<T> > C(rowsA, vector<int>(colsB, 0));
+    // Input matrices A,B should have correct dimensions.
+    // Resulting matrix C should have dimensions rowsA x colsB
+    if (colsA != rowsB || rowsC != rowsA || colsC != colsB) {
+        cout << "Invalid matrices dimensions for multiplication operation" << endl;
+        return -1;
+    }
 
     // Perform matrix multiplication
     for (int i = 0; i < rowsA; ++i) {
@@ -28,42 +36,44 @@ vector <vector<T> > matmul(vector<vector<T> > &A, vector<vector<T> > &B)
             }
         }
     }
-    return C;
+    return 0;
 }
 
 
 // Function to transpose a matrix
-// This function takes a constant reference to a 2D vector matrix
-// and returns a new 2D vector which is the transposed version of the input matrix.
-template <class T>
-vector<vector<T> > transpose_mat(const vector<vector<T> >& matrix)
+int transpose_mat(const vector<vector<float> > &matrix, vector<vector<float> > &out)
 {
     if (matrix.empty()) {
-        cout << "Error: empty matrix" << endl;
-        return {};
+        cout << "Error: empty input matrix" << endl;
+        return -1;
+    }
+    if (out.empty()) {
+        cout << "Error: empty output matrix" << endl;
+        return -1;
     }
 
     int rows = matrix.size();
     int cols = matrix[0].size();
 
-    // Create a new matrix with dimensions cols x rows
-    vector<vector<T> > transposed_mat(cols, vector<T>(rows));
+    // Output matrix should have dimensions: (input cols) x (input rows)
+    if (out[0].size() != rows || out.size() != cols) {
+        cout << "Invalid output matrix dimensions for transpose operation" << endl;
+        return -1;
+    }
 
     // Fill the transposed matrix
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
-            transposed_mat[j][i] = matrix[i][j];
+            out[j][i] = matrix[i][j];
         }
     }
-
-    return transposed_mat;
+    return 0;
 }
 
 // Helper function to print a matrix
-template <class T>
-void print_mat(const vector<vector<T> >& matrix, const string name)
+void print_mat(const vector<vector<float> >& matrix, const string content)
 {
-    cout << "Printing Matrix: " << name << endl;
+    cout << content << endl;
 
     for (const auto& row : matrix) {
         for (auto element : row) {

@@ -1,57 +1,48 @@
-#include "../matrix.hpp"
 #include <cstdio>
 #include <vector>
 #include <iostream>
+#include "matrix.hpp"
 
 using namespace std;
 
 
-
-int main() {
+int main(void) {
     // Example transpose
-    vector<vector<int>> matrix = {
+    vector<vector<float> > matrix = {
         {1, 2, 3},
         {4, 5, 6},
         {7, 8, 9}
     };
-
-    cout << "Original matrix:" << endl;
-    print_mat(matrix);
+    vector<vector<float> > transposed(3, vector<float>(3));
+    print_mat(matrix, "Original matrix");
 
     // Transpose the matrix
-    vector<vector<int>> transposed_mat = transpose_mat(matrix);
-
-    cout << "Transposed matrix:" << endl;
-    print_mat(transposed_mat);
+    transpose_mat(matrix, transposed);
+    print_mat(transposed, "Transposed matrix");
 
 
     // Example multiplication
-    vector<vector<int>> matrixA = {
+    vector<vector<float> > matrixA = {
         {1, 2, 3},
         {4, 5, 6}
     };
 
-    vector<vector<int>> matrixB = {
+    vector<vector<float> > matrixB = {
         {7, 8},
         {9, 10},
         {11, 12}
     };
 
-    cout << "Matrix A:" << endl;
-    print_mat(matrixA);
+    vector<vector<float> > matrixC(2, vector<float>(2));
 
-    cout << "Matrix B:" << endl;
-    print_mat(matrixB);
+    print_mat(matrixA, "Matrix A");
+    print_mat(matrixB, "Matrix B");
+    print_mat(matrixC, "Matrix C");
 
-    try {
-        // Multiply the matrices
-        vector<vector<int>> resultMatrix = matmul(matrixA, matrixB);
-
-        cout << "Resultant matrix after multiplication:" << endl;
-        print_mat(resultMatrix);
-    } catch (const std::invalid_argument& e) {
-        cerr << "Error: " << e.what() << endl;
-    }
+    // Multiply the matrices
+    matmul(matrixA, matrixB, matrixC);
+    cout << "Result matrix after multiplication:" << endl;
+    print_mat(matrixC, "Result matrix");
 
     return 0;
 }

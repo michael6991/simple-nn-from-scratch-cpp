@@ -31,5 +31,5 @@ class FullyConnectedNetwork
         float loss();
 
         // add fully connected layer with a given number of mlps
-        Layer * FullyConnectedNetwork::add_layer(uint32_t n, bool init_random, string layer_name);
+        Layer * add_layer(uint32_t n, bool init_random, string layer_name);
 };

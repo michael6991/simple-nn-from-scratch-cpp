@@ -54,6 +54,7 @@ int FullyConnectedNetwork::forward_propagation(vector<float> x, vector<float> y)
     }
 
     Layer * y_result = out;
+    return 0;
 }
 
 

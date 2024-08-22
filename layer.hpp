@@ -3,6 +3,9 @@
 #pragma once
 
 #include <string>
+#include "perceptron.hpp"
+
+using namespace std;
 
 
 // layer flags

@@ -7,11 +7,9 @@
 
 using namespace std;
 
-template <class T>
-vector <vector<T>> matmul(vector<vector<T>> &A, vector<vector<T>> &B);
-template <class T>
-std::vector<std::vector<T>> transpose_mat(const std::vector<std::vector<T>>& matrix);
-template <class T>
-void print_mat(const std::vector<std::vector<T>>& matrix);
+// Function declarations
+int matmul(vector<vector<float> > &A, vector<vector<float> > &B, vector<vector<float> > &C);
+int transpose_mat(const vector<vector<float> > &matrix, vector<vector<float> > &out);
+void print_mat(const vector<vector<float> >& matrix, const string content);
 
 #endif /* __MATRIX_H__ */
