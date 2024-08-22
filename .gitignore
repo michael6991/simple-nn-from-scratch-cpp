@@ -1,0 +1,31 @@
+# Ignore build output and other Bazel artifacts
+bazel-bin/
+bazel-deep-net-cpu/
+bazel-out/
+bazel-testlogs/
+bazel-
+build/
+out/
+MODULE*
+*.o
+*.elf
+*.bin
+*.hex
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+*.launch
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+
+# Ignore configuration files with sensitive info
+config.ini
+
+# Don't ignore .gitignore itself
+!.gitignore
