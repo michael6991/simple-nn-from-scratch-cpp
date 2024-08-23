@@ -11,7 +11,11 @@ def _impl(ctx):
     tool_paths = [
         tool_path(
             name = "gcc",
-            path = "/usr/bin/clang",
+            path = "/usr/bin/clang++",
+        ),
+        tool_path(
+            name = "cpp",
+            path = "/usr/bin/clang++",
         ),
         tool_path(
             name = "ld",
@@ -20,14 +24,6 @@ def _impl(ctx):
         tool_path(
             name = "ar",
             path = "/usr/bin/ar",
-        ),
-        tool_path(
-            name = "cpp",
-            path = "/usr/bin/clang++",
-        ),
-        tool_path(
-            name = "gcov",
-            path = "/usr/bin/gcov",
         ),
         tool_path(
             name = "nm",
@@ -56,8 +52,10 @@ def _impl(ctx):
                     flag_groups = ([
                         flag_group(
                             flags = [
+                                "-std=c++17",
                                 "-Wall",
-                                "-fPIC",
+                                "-g",  # generate debug symbols
+                                # "-fPIC",
                                 # "-march=armv8-a",
                             ],
                         ),
@@ -70,21 +68,26 @@ def _impl(ctx):
     return cc_common.create_cc_toolchain_config_info(
         ctx = ctx,
         features = features,
-        cxx_builtin_include_directories = [
-            "/Library/Developer/CommandLineTools/usr/include/c++/v1",
-            "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
-            "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include",
-            "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks",
-        ],
-        toolchain_identifier = "local",
+        tool_paths = tool_paths,
+
+        toolchain_identifier = "m1_mac_arm64-toolchain",
         host_system_name = "local",
         target_system_name = "local",
+
         target_cpu = "darwin_arm64",
         target_libc = "macosx",
-        compiler = "clang",
+
+        compiler = "clang++",
+
         abi_version = "darwin_arm64",
         abi_libc_version = "darwin_arm64",
-        tool_paths = tool_paths,
+
+        cxx_builtin_include_directories = [
+            "/Library/Developer/CommandLineTools/usr/include/c++/v1",
+            "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include",
+            "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
+            "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks",
+        ],
     )
 
 cc_toolchain_config = rule(
