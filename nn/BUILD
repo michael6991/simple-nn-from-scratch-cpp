@@ -1,8 +1,8 @@
-load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
-
+load("@rules_cc//cc:defs.bzl", "cc_library")
 
 cc_library(
     name = "nn-lib",
+
     srcs = ["nn.cpp",
             "layer.cpp",
             "perceptron.cpp",
@@ -12,14 +12,11 @@ cc_library(
              "layer.hpp",
              "perceptron.hpp",
              "matrix.hpp"],
-)
 
-cc_binary(
-    name = "run-main",
-    srcs = ["main.cpp"],
-    deps = [
-        ":nn-lib"
-    ],
+    visibility = ["//main:__pkg__"],
+    
+    #"//visibility:public" # seen by everyone
+    #"//test:__pkg__",  # private visibility only to tests
+    #"//main:__pkg__"], # private visibility only to main
 )
-
 

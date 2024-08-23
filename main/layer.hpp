@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <string>
 #include "perceptron.hpp"
+#include "matrix.hpp"
 
 using namespace std;
 
@@ -28,15 +29,19 @@ class Layer
         {
             // Initialize the layer with new perceptrons
             printf("Creating mlp units for layer: %s", name.c_str());
-            for (uint32_t i = 0; i < n; i++) {
+            for (auto i = 0; i < n; i++) {
                 perceptrons.push_back(mlp_create(init_random));
             }
         }
+
+        // Copy constructor declaration
+        Layer(const Layer &other);
 
 
         ~Layer()
         {
             printf("~Layer()\n");
+            // delete perceptrons
         }
     
         template <class T>
@@ -45,6 +50,9 @@ class Layer
         float compute_layer();
         float grad_descent();
         void print_layer(const string content);
+        string get_name();
+        uint32_t get_n();
+        uint32_t get_num_edges();
 
 };
 

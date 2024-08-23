@@ -1,6 +1,9 @@
 load("@rules_cc//cc:defs.bzl", "cc_toolchain")
 load(":m1_mac_arm64_cc_toolchain_config.bzl", "cc_toolchain_config")
 
+cc_toolchain_config(
+    name = "m1_mac_arm64_cc_toolchain_config"
+)
 
 cc_toolchain(
     name = "m1_mac_arm64_toolchain",
@@ -31,8 +34,4 @@ toolchain(
 )
 
 filegroup(name = "empty")
-
-cc_toolchain_config(name = "m1_mac_arm64_cc_toolchain_config")
-
 package(default_visibility = ["//visibility:public"])
-

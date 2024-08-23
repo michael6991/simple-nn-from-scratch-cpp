@@ -1,6 +1,15 @@
 #include "nn.hpp"
 
 
+using namespace std;
+
+
+FullyConnectedNetwork::FullyConnectedNetwork(const FullyConnectedNetwork &other)
+{
+    
+}
+
+
 // Calculate the loss function over all the outputs from a single training epoch run.
 // The loss function is sometimes refered to as the "cost function".
 // It is the softmax function.
@@ -52,32 +61,16 @@ int FullyConnectedNetwork::forward_propagation(vector<float> x, vector<float> y)
         layer->compute_layer();
     }
 
-    Layer * y_result = out;
+    // Layer * y_result = out;
     return 0;
 }
 
 
-Layer * FullyConnectedNetwork::add_layer(uint32_t n, bool init_random, string layer_name)
+Layer * FullyConnectedNetwork::add_layer(uint32_t n, bool init_random, uint32_t layer_num,  string layer_name)
 {
     if (n == 0) {
         printf("cannot add new layer with 0 perceptrons\n");
         return nullptr;
     }
-    return new Layer(n, init_random, layer_name);
-}
-
-
-int main()
-{
-    FullyConnectedNetwork * nn = new FullyConnectedNetwork();
-
-    nn->add_layer(4, false, "input");
-    nn->add_layer(3, true, "hidden-1");
-    nn->add_layer(2, true, "hidden-2");
-    nn->add_layer(2, true, "output");
-
-
-    delete nn;
-
-    return 0;
+    return new Layer(n, init_random, layer_num, layer_name);
 }

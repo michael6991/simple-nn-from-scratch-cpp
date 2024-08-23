@@ -6,8 +6,15 @@ load("@bazel_tools//tools/cpp:cc_toolchain_config_lib.bzl",
     "flag_set",
     "tool_path")
 
+all_link_actions = [ # NEW
+      ACTION_NAMES.cpp_link_executable,
+      ACTION_NAMES.cpp_link_dynamic_library,
+      ACTION_NAMES.cpp_link_nodeps_dynamic_library,
+  ]
 
 def _impl(ctx):
+    print("Using MacOS Clang toolchain")
+
     tool_paths = [
         tool_path(
             name = "gcc",
@@ -24,6 +31,10 @@ def _impl(ctx):
         tool_path(
             name = "ar",
             path = "/usr/bin/ar",
+        ),
+        tool_path(
+              name = "gcov",
+              path = "/usr/bin/gcov",
         ),
         tool_path(
             name = "nm",
@@ -52,7 +63,7 @@ def _impl(ctx):
                     flag_groups = ([
                         flag_group(
                             flags = [
-                                "-std=c++17",
+                                "-std=c++20",
                                 "-Wall",
                                 "-g",  # generate debug symbols
                                 # "-fPIC",
@@ -63,6 +74,25 @@ def _impl(ctx):
                 ),
             ],
         ),
+
+
+        feature( # NEW
+            name = "default_linker_flags",
+            enabled = True,
+            flag_sets = [
+                flag_set(
+                    actions = all_link_actions,
+                    flag_groups = ([
+                        flag_group(
+                            flags = [
+                                "-lstdc++",
+                            ],
+                        ),
+                    ]),
+                ),
+            ],
+        ),
+      
     ]
 
     return cc_common.create_cc_toolchain_config_info(
@@ -83,7 +113,6 @@ def _impl(ctx):
         abi_libc_version = "darwin_arm64",
 
         cxx_builtin_include_directories = [
-            "/Library/Developer/CommandLineTools/usr/include/c++/v1",
             "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include",
             "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
             "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks",

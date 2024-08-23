@@ -1,5 +1,4 @@
 #include "layer.hpp"
-#include "../utils/matrix.hpp"
 
 using namespace std;
 
@@ -7,17 +6,44 @@ using namespace std;
 // Return the sigmoid result of x.
 // x can be positive or negative float.
 // The result is bound to be between [0, 1].
-float sigmoid(float x)
-{
+float sigmoid(float x){
     return 1 / (1 + exp(-x));
 }
 
 // Return the rectified linear unit of x. (ReLU)
 // This is a sort of activation function that is easier to compute
 // than the sigmoid.
-float relu(float x)
-{
+float relu(float x){
     return max(float(0), x);
+}
+
+string Layer::get_name(){
+    return this->name;
+}
+
+
+uint32_t Layer::get_n(){
+    return this->n;
+}
+
+
+uint32_t Layer::get_num_edges(){
+    return this->edges;
+}
+
+
+// Copy constructor implementation
+Layer::Layer(const Layer &other)
+{
+    // Copy each member of other to this
+    this->n = other.n;
+    this->edges = other.edges;
+    this->layer_n = other.layer_n;
+    this->name = other.name;
+
+    // TODO: ensure this:
+    // that's actually a deep copy. New memory is allocated for dst vector
+    this->perceptrons = other.perceptrons;
 }
 
 
@@ -25,7 +51,6 @@ template <class T>
 int Layer::copy_vector(const vector<T> &src, vector<T> &dst)
 {
     // TODO: check type equality
-
     // that's actually a deep copy. New memory is allocated for dst vector
     dst = src;
 }

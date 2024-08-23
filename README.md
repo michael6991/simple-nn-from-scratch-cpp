@@ -1,8 +1,8 @@
 # deep-net-cpu
 
 To compile:
-clang++ -std=c++17 -o myprogram main.cpp
+clang++ -std=c++20 -o myprogram main.cpp
 
-clang++ -std=c++17 -o out/test_matrix test_matrix.cpp matrix.cpp
+clang++ -std=c++20 -o out/test_matrix test_matrix.cpp matrix.cpp
 
-bazel build //main:main-nn-run
+bazel build //main:run
