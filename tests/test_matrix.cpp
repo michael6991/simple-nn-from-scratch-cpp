@@ -6,7 +6,8 @@
 using namespace std;
 
 
-int main(void) {
+int main(void) 
+{
     // Example transpose
     vector<vector<float> > matrix = {
         {1, 2, 3},

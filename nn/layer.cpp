@@ -1,10 +1,5 @@
 #include "layer.hpp"
-#include "perceptron.hpp"
-#include "matrix.hpp"
-#include <stdint.h>
-#include <cstdio>
-#include <vector>
-#include <algorithm>
+#include "../utils/matrix.hpp"
 
 using namespace std;
 
@@ -27,13 +22,16 @@ float relu(float x)
 
 
 template <class T>
-void Layer::copy_vector(const vector<T> &src, vector<T> &dst)
+int Layer::copy_vector(const vector<T> &src, vector<T> &dst)
 {
-    // deep copy
+    // TODO: check type equality
+
+    // that's actually a deep copy. New memory is allocated for dst vector
     dst = src;
 }
 
-// copy float src input to destination input (perceptrons)
+
+// Copy float src input to destination input (perceptrons)
 int Layer::copy_vector(const vector<float> &src, vector<mlp_t *> &dst)
 {
     if (dst.size() == 0 || src.size() == 0) {
@@ -46,9 +44,19 @@ int Layer::copy_vector(const vector<float> &src, vector<mlp_t *> &dst)
     }
 
     for (auto i = 0; i < src.size(); i++) {
-        dst[i].a = src[i];
+        ((mlp_t *)(dst[i]))->a = src[i];
     }
-    
+
+    return 0;
+}
+
+void Layer::print_layer(const string content)
+{
+    printf("%s w•a+b: ", content.c_str());
+    for (auto p : perceptrons) {
+        printf(" %f•%f+%f ",p->w, p->a, p->b);
+    }
+    printf("\n");
 }
 
 // Compute the a single forward propagation from current layer to the next layer.
@@ -73,7 +81,7 @@ int Layer::copy_vector(const vector<float> &src, vector<mlp_t *> &dst)
 // 
 float Layer::compute_layer()
 {
-    vector<float> * x;
+    // vector<float> * x;
 
 
 

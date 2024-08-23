@@ -60,7 +60,7 @@ static int list_passthrough_eq(const void *a, const void *b)
     void *sa = *(void **)a;
     void *sb = *(void **)b;
 
-    return sa - sb;
+    return (char *)sa - (char *)sb;  // TODO: revisit this, this is problematic
 }
 
 

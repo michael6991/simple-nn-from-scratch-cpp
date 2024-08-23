@@ -1,5 +1,4 @@
 #include "nn.hpp"
-#include "layer.hpp"
 
 
 // Calculate the loss function over all the outputs from a single training epoch run.
