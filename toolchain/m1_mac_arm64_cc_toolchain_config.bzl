@@ -6,11 +6,12 @@ load("@bazel_tools//tools/cpp:cc_toolchain_config_lib.bzl",
     "flag_set",
     "tool_path")
 
-all_link_actions = [ # NEW
-      ACTION_NAMES.cpp_link_executable,
-      ACTION_NAMES.cpp_link_dynamic_library,
-      ACTION_NAMES.cpp_link_nodeps_dynamic_library,
-  ]
+all_link_actions = [
+    ACTION_NAMES.cpp_link_static_library,
+    ACTION_NAMES.cpp_link_executable,
+    ACTION_NAMES.cpp_link_dynamic_library,
+    ACTION_NAMES.cpp_link_nodeps_dynamic_library,
+]
 
 def _impl(ctx):
     print("Using MacOS Clang toolchain")
@@ -75,23 +76,22 @@ def _impl(ctx):
             ],
         ),
 
-
-        feature( # NEW
-            name = "default_linker_flags",
-            enabled = True,
-            flag_sets = [
-                flag_set(
-                    actions = all_link_actions,
-                    flag_groups = ([
-                        flag_group(
-                            flags = [
-                                "-lstdc++",
-                            ],
-                        ),
-                    ]),
-                ),
-            ],
-        ),
+        # feature(
+        #     name = "default_linker_flags",
+        #     enabled = True,
+        #     flag_sets = [
+        #         flag_set(
+        #             actions = all_link_actions,
+        #             flag_groups = ([
+        #                 flag_group(
+        #                     flags = [
+        #                         # "-lstdc++",
+        #                     ],
+        #                 ),
+        #             ]),
+        #         ),
+        #     ],
+        # ),
       
     ]
 

@@ -7,8 +7,10 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <random>
 #include "perceptron.hpp"
 #include "matrix.hpp"
+
 
 using namespace std;
 
@@ -18,19 +20,38 @@ class Layer
         uint32_t n = 0;              // total number of perceptrons
         uint32_t edges = 0;          // total number of edges between this layer and the next
         uint32_t layer_n = 0;        // index of this layer within the whole network
-        vector<mlp_t *> perceptrons; // multi-layer perceptrons vector of this layer
         string name = "";            // name of the layer
 
+        vector<float> x;             // Inputs
+        vector<float> w;             // Weights
+        vector<float> b;             // Biases
+        vector<float> y;             // output: activation_func(w•a + b)
+
     public:
-        Layer(uint32_t num_of_perc, bool init_random=true, uint32_t layer_num=0, string layer_name="default"):
-                                                                                            n(num_of_perc),
-                                                                                            layer_n(layer_num),
-                                                                                            name(layer_name)
+        Layer(uint32_t n, bool init_random=true, uint32_t layer_n=0, string name="default"):
+                                                                                            n(n),
+                                                                                            layer_n(layer_n),
+                                                                                            name(name)
         {
-            // Initialize the layer with new perceptrons
-            printf("Creating mlp units for layer: %s", name.c_str());
-            for (auto i = 0; i < n; i++) {
-                perceptrons.push_back(mlp_create(init_random));
+            // Create a random device to seed the generator
+            random_device rd;
+            // Create a Mersenne Twister random number engine
+            mt19937 gen(rd());
+            // Create a uniform distribution between 0 and 1
+            uniform_real_distribution<float> dist(0.0, 1.0);
+
+            // Vector is resized to 'n' elements, all initialized to 0
+            x.resize(n);
+            w.resize(n);
+            b.resize(n);
+            y.resize(n);
+
+            if (init_random) {
+                printf("Creating mlp units with random weights for layer: %s\n", name.c_str());
+                for (auto i = 0; i < n; i++)
+                    w[i] = dist(gen);
+            } else {
+                printf("Created mlp units with weights initialize to 0 for layer: %s\n", name.c_str());
             }
         }
 
@@ -41,7 +62,16 @@ class Layer
         ~Layer()
         {
             printf("~Layer()\n");
-            // delete perceptrons
+            // Requests the removal of unused capacity.
+            // Basically de-allocates all memory that was allocated to the vector
+            x.resize(0);
+            x.shrink_to_fit();
+            w.resize(0);
+            w.shrink_to_fit();
+            b.resize(0);
+            b.shrink_to_fit();
+            y.resize(0);
+            y.shrink_to_fit();
         }
     
         template <class T>

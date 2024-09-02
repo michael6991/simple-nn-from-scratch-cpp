@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <vector>
 #include <iostream>
-#include "matrix.hpp"
+#include "../main/matrix.hpp"
 
 using namespace std;
 
@@ -9,12 +9,12 @@ using namespace std;
 int main(void) 
 {
     // Example transpose
-    vector<vector<float> > matrix = {
+    matrix_f32_t matrix = {
         {1, 2, 3},
         {4, 5, 6},
         {7, 8, 9}
     };
-    vector<vector<float> > transposed(3, vector<float>(3));
+    matrix_f32_t transposed(3, vector<float>(3));
     print_mat(matrix, "Original matrix");
 
     // Transpose the matrix
@@ -23,18 +23,18 @@ int main(void)
 
 
     // Example multiplication
-    vector<vector<float> > matrixA = {
+    matrix_f32_t matrixA = {
         {1, 2, 3},
         {4, 5, 6}
     };
 
-    vector<vector<float> > matrixB = {
+    matrix_f32_t matrixB = {
         {7, 8},
         {9, 10},
         {11, 12}
     };
 
-    vector<vector<float> > matrixC(2, vector<float>(2));
+    matrix_f32_t matrixC(2, vector<float>(2));
 
     print_mat(matrixA, "Matrix A");
     print_mat(matrixB, "Matrix B");

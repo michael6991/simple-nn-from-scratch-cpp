@@ -43,7 +43,10 @@ Layer::Layer(const Layer &other)
 
     // TODO: ensure this:
     // that's actually a deep copy. New memory is allocated for dst vector
-    this->perceptrons = other.perceptrons;
+    this->x = other.x;
+    this->w = other.w;
+    this->b = other.b;
+    this->y = other.y;
 }
 
 
@@ -67,20 +70,19 @@ int Layer::copy_vector(const vector<float> &src, vector<mlp_t *> &dst)
         printf("sizes of vectors don't  match\n");
         return -1;
     }
-
-    for (auto i = 0; i < src.size(); i++) {
+    for (auto i = 0; i < src.size(); i++)
         ((mlp_t *)(dst[i]))->a = src[i];
-    }
-
     return 0;
 }
 
 void Layer::print_layer(const string content)
 {
-    printf("%s w•a+b: ", content.c_str());
-    for (auto p : perceptrons) {
-        printf(" %f•%f+%f ",p->w, p->a, p->b);
-    }
+    printf("\n%s: w•x+b = y \n\n", content.c_str());
+    printf("w      x      b      y\n");
+
+    for (auto i = 0; i < this->n; i++)
+        printf("%.2f • %.2f + %.2f = %.2f\n", this->w[i], this->x[i], this->b[i], this->y[i]);
+
     printf("\n");
 }
 
@@ -89,7 +91,7 @@ void Layer::print_layer(const string content)
 // 1) Organize all the inputs in a column vector.
 //    (inputs can be activations from previous layer or just new data feed from outside).
 // 2) Organize all the weights in a matrix, where each row in this matrix
-//    corresponds to the connections between one layer and a particular neuron
+//    corresponds to the connections between one layer and a particular perceptron
 //    in the next layer.
 // 
 //     { w00 w01 ... w0n }          [x0]         [b0]
@@ -102,12 +104,12 @@ void Layer::print_layer(const string content)
 // 3) Transpose the weights matrix (T notation).
 // 4) Do a matrix - vector product and add vector of biases to the product.
 // 5) Calculate the activation function on each one of the elements in the final product vector:
-//    y = sigma(WTx + b)
+//    y = sigma(WT • x + b)
 // 
 float Layer::compute_layer()
 {
-    // vector<float> * x;
-
+    // Organize weights matrix TODO: figure out how to setup dimensions for matrix
+    matrix_f32_t W;
 
 
 

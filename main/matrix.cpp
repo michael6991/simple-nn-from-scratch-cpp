@@ -1,5 +1,5 @@
-#include "matrix.hpp"
 #include <iostream>
+#include "matrix.hpp"
 
 using namespace std;
 
@@ -7,7 +7,7 @@ using namespace std;
 // Function Defenitions
 
 // Elements can be float/double/int
-int matmul(vector<vector<float> > &A, vector<vector<float> > &B, vector<vector<float> > &C)
+int matmul(const matrix_f32_t &A, const matrix_f32_t &B, matrix_f32_t &C)
 {
     if (A.empty() || B.empty() || C.empty()) {
         cout << "Error: empty matrices given" << endl;
@@ -41,7 +41,7 @@ int matmul(vector<vector<float> > &A, vector<vector<float> > &B, vector<vector<f
 
 
 // Function to transpose a matrix
-int transpose_mat(const vector<vector<float> > &matrix, vector<vector<float> > &out)
+int transpose_mat(const matrix_f32_t &matrix, matrix_f32_t &out)
 {
     if (matrix.empty()) {
         cout << "Error: empty input matrix" << endl;
@@ -71,7 +71,7 @@ int transpose_mat(const vector<vector<float> > &matrix, vector<vector<float> > &
 }
 
 // Helper function to print a matrix
-void print_mat(const vector<vector<float> >& matrix, const string content)
+void print_mat(const matrix_f32_t &matrix, const string content)
 {
     cout << content << endl;
 
