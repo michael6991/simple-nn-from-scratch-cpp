@@ -1,0 +1,93 @@
+(base) ➜  deep-net-cpu git:(main) ✗ bazel build --subcommands //main:run-main
+DEBUG: /Users/mvigdorchik/deep-net-cpu/toolchain/m1_mac_arm64_cc_toolchain_config.bzl:17:10: Using MacOS Clang toolchain
+INFO: Analyzed target //main:run-main (1 packages loaded, 17 targets configured).
+SUBCOMMAND: # //main:net [action 'Compiling main/nn.cpp', configuration: 096dcc84165363e69a851ebe8131b032f5448c94ddc4951775429dc78e79f898, execution platform: @@platforms//host:host, mnemonic: CppCompile]
+(cd /private/var/tmp/_bazel_mvigdorchik/336d1037fa36bcddc08679c308dc5b0e/execroot/_main && \
+  exec env - \
+    PATH=/Users/mvigdorchik/anaconda3/bin:/Users/mvigdorchik/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin \
+    PWD=/proc/self/cwd \
+  /usr/bin/clang++ -MD -MF bazel-out/darwin_arm64-fastbuild/bin/main/_objs/net/nn.d '-frandom-seed=bazel-out/darwin_arm64-fastbuild/bin/main/_objs/net/nn.o' -iquote . -iquote bazel-out/darwin_arm64-fastbuild/bin '-std=c++14' -Wall -g -c main/nn.cpp -o bazel-out/darwin_arm64-fastbuild/bin/main/_objs/net/nn.o)
+# Configuration: 096dcc84165363e69a851ebe8131b032f5448c94ddc4951775429dc78e79f898
+# Execution platform: @@platforms//host:host
+SUBCOMMAND: # //main:mlp [action 'Compiling main/perceptron.cpp', configuration: 096dcc84165363e69a851ebe8131b032f5448c94ddc4951775429dc78e79f898, execution platform: @@platforms//host:host, mnemonic: CppCompile]
+(cd /private/var/tmp/_bazel_mvigdorchik/336d1037fa36bcddc08679c308dc5b0e/execroot/_main && \
+  exec env - \
+    PATH=/Users/mvigdorchik/anaconda3/bin:/Users/mvigdorchik/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin \
+    PWD=/proc/self/cwd \
+  /usr/bin/clang++ -MD -MF bazel-out/darwin_arm64-fastbuild/bin/main/_objs/mlp/perceptron.d '-frandom-seed=bazel-out/darwin_arm64-fastbuild/bin/main/_objs/mlp/perceptron.o' -iquote . -iquote bazel-out/darwin_arm64-fastbuild/bin '-std=c++14' -Wall -g -c main/perceptron.cpp -o bazel-out/darwin_arm64-fastbuild/bin/main/_objs/mlp/perceptron.o)
+# Configuration: 096dcc84165363e69a851ebe8131b032f5448c94ddc4951775429dc78e79f898
+# Execution platform: @@platforms//host:host
+SUBCOMMAND: # //main:layer [action 'Compiling main/layer.cpp', configuration: 096dcc84165363e69a851ebe8131b032f5448c94ddc4951775429dc78e79f898, execution platform: @@platforms//host:host, mnemonic: CppCompile]
+(cd /private/var/tmp/_bazel_mvigdorchik/336d1037fa36bcddc08679c308dc5b0e/execroot/_main && \
+  exec env - \
+    PATH=/Users/mvigdorchik/anaconda3/bin:/Users/mvigdorchik/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin \
+    PWD=/proc/self/cwd \
+  /usr/bin/clang++ -MD -MF bazel-out/darwin_arm64-fastbuild/bin/main/_objs/layer/layer.d '-frandom-seed=bazel-out/darwin_arm64-fastbuild/bin/main/_objs/layer/layer.o' -iquote . -iquote bazel-out/darwin_arm64-fastbuild/bin '-std=c++14' -Wall -g -c main/layer.cpp -o bazel-out/darwin_arm64-fastbuild/bin/main/_objs/layer/layer.o)
+# Configuration: 096dcc84165363e69a851ebe8131b032f5448c94ddc4951775429dc78e79f898
+# Execution platform: @@platforms//host:host
+SUBCOMMAND: # //main:matrix [action 'Compiling main/matrix.cpp', configuration: 096dcc84165363e69a851ebe8131b032f5448c94ddc4951775429dc78e79f898, execution platform: @@platforms//host:host, mnemonic: CppCompile]
+(cd /private/var/tmp/_bazel_mvigdorchik/336d1037fa36bcddc08679c308dc5b0e/execroot/_main && \
+  exec env - \
+    PATH=/Users/mvigdorchik/anaconda3/bin:/Users/mvigdorchik/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin \
+    PWD=/proc/self/cwd \
+  /usr/bin/clang++ -MD -MF bazel-out/darwin_arm64-fastbuild/bin/main/_objs/matrix/matrix.d '-frandom-seed=bazel-out/darwin_arm64-fastbuild/bin/main/_objs/matrix/matrix.o' -iquote . -iquote bazel-out/darwin_arm64-fastbuild/bin '-std=c++14' -Wall -g -c main/matrix.cpp -o bazel-out/darwin_arm64-fastbuild/bin/main/_objs/matrix/matrix.o)
+# Configuration: 096dcc84165363e69a851ebe8131b032f5448c94ddc4951775429dc78e79f898
+# Execution platform: @@platforms//host:host
+SUBCOMMAND: # //main:run-main [action 'Compiling main/main.cpp', configuration: 096dcc84165363e69a851ebe8131b032f5448c94ddc4951775429dc78e79f898, execution platform: @@platforms//host:host, mnemonic: CppCompile]
+(cd /private/var/tmp/_bazel_mvigdorchik/336d1037fa36bcddc08679c308dc5b0e/execroot/_main && \
+  exec env - \
+    PATH=/Users/mvigdorchik/anaconda3/bin:/Users/mvigdorchik/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin \
+    PWD=/proc/self/cwd \
+  /usr/bin/clang++ -MD -MF bazel-out/darwin_arm64-fastbuild/bin/main/_objs/run-main/main.d '-frandom-seed=bazel-out/darwin_arm64-fastbuild/bin/main/_objs/run-main/main.o' -iquote . -iquote bazel-out/darwin_arm64-fastbuild/bin -iquote external/rules_cc -iquote bazel-out/darwin_arm64-fastbuild/bin/external/rules_cc -iquote external/bazel_tools -iquote bazel-out/darwin_arm64-fastbuild/bin/external/bazel_tools '-std=c++14' -Wall -g -c main/main.cpp -o bazel-out/darwin_arm64-fastbuild/bin/main/_objs/run-main/main.o)
+# Configuration: 096dcc84165363e69a851ebe8131b032f5448c94ddc4951775429dc78e79f898
+# Execution platform: @@platforms//host:host
+SUBCOMMAND: # //main:mlp [action 'Linking main/libmlp.a', configuration: 096dcc84165363e69a851ebe8131b032f5448c94ddc4951775429dc78e79f898, execution platform: @@platforms//host:host, mnemonic: CppArchive]
+(cd /private/var/tmp/_bazel_mvigdorchik/336d1037fa36bcddc08679c308dc5b0e/execroot/_main && \
+  exec env - \
+    PATH=/Users/mvigdorchik/anaconda3/bin:/Users/mvigdorchik/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin \
+    PWD=/proc/self/cwd \
+  /usr/bin/ar -static -o bazel-out/darwin_arm64-fastbuild/bin/main/libmlp.a bazel-out/darwin_arm64-fastbuild/bin/main/_objs/mlp/perceptron.o)
+# Configuration: 096dcc84165363e69a851ebe8131b032f5448c94ddc4951775429dc78e79f898
+# Execution platform: @@platforms//host:host
+SUBCOMMAND: # //main:matrix [action 'Linking main/libmatrix.a', configuration: 096dcc84165363e69a851ebe8131b032f5448c94ddc4951775429dc78e79f898, execution platform: @@platforms//host:host, mnemonic: CppArchive]
+(cd /private/var/tmp/_bazel_mvigdorchik/336d1037fa36bcddc08679c308dc5b0e/execroot/_main && \
+  exec env - \
+    PATH=/Users/mvigdorchik/anaconda3/bin:/Users/mvigdorchik/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin \
+    PWD=/proc/self/cwd \
+  /usr/bin/ar -static -o bazel-out/darwin_arm64-fastbuild/bin/main/libmatrix.a bazel-out/darwin_arm64-fastbuild/bin/main/_objs/matrix/matrix.o)
+# Configuration: 096dcc84165363e69a851ebe8131b032f5448c94ddc4951775429dc78e79f898
+# Execution platform: @@platforms//host:host
+SUBCOMMAND: # //main:net [action 'Linking main/libnet.a', configuration: 096dcc84165363e69a851ebe8131b032f5448c94ddc4951775429dc78e79f898, execution platform: @@platforms//host:host, mnemonic: CppArchive]
+(cd /private/var/tmp/_bazel_mvigdorchik/336d1037fa36bcddc08679c308dc5b0e/execroot/_main && \
+  exec env - \
+    PATH=/Users/mvigdorchik/anaconda3/bin:/Users/mvigdorchik/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin \
+    PWD=/proc/self/cwd \
+  /usr/bin/ar -static -o bazel-out/darwin_arm64-fastbuild/bin/main/libnet.a bazel-out/darwin_arm64-fastbuild/bin/main/_objs/net/nn.o)
+# Configuration: 096dcc84165363e69a851ebe8131b032f5448c94ddc4951775429dc78e79f898
+# Execution platform: @@platforms//host:host
+SUBCOMMAND: # //main:layer [action 'Linking main/liblayer.a', configuration: 096dcc84165363e69a851ebe8131b032f5448c94ddc4951775429dc78e79f898, execution platform: @@platforms//host:host, mnemonic: CppArchive]
+(cd /private/var/tmp/_bazel_mvigdorchik/336d1037fa36bcddc08679c308dc5b0e/execroot/_main && \
+  exec env - \
+    PATH=/Users/mvigdorchik/anaconda3/bin:/Users/mvigdorchik/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin \
+    PWD=/proc/self/cwd \
+  /usr/bin/ar -static -o bazel-out/darwin_arm64-fastbuild/bin/main/liblayer.a bazel-out/darwin_arm64-fastbuild/bin/main/_objs/layer/layer.o)
+# Configuration: 096dcc84165363e69a851ebe8131b032f5448c94ddc4951775429dc78e79f898
+# Execution platform: @@platforms//host:host
+ERROR: /Users/mvigdorchik/deep-net-cpu/main/BUILD:17:11: Linking main/libmlp.a failed: (Exit 1): ar failed: error executing CppArchive command (from target //main:mlp) /usr/bin/ar -static -o bazel-out/darwin_arm64-fastbuild/bin/main/libmlp.a bazel-out/darwin_arm64-fastbuild/bin/main/_objs/mlp/perceptron.o
+
+Use --sandbox_debug to see verbose messages from the sandbox and retain the sandbox build root for debugging
+ar: only one of -a and -[bi] options allowed
+usage:  ar -d [-TLsv] archive file ...
+        ar -m [-TLsv] archive file ...
+        ar -m [-abiTLsv] position archive file ...
+        ar -p [-TLsv] archive [file ...]
+        ar -q [-cTLsv] archive file ...
+        ar -r [-cuTLsv] archive file ...
+        ar -r [-abciuTLsv] position archive file ...
+        ar -t [-TLsv] archive [file ...]
+        ar -x [-ouTLsv] archive [file ...]
+Target //main:run-main failed to build
+Use --verbose_failures to see the command lines of failed build steps.
+INFO: Elapsed time: 0.876s, Critical Path: 0.50s
+INFO: 11 processes: 6 internal, 5 darwin-sandbox.
+ERROR: Build did NOT complete successfully

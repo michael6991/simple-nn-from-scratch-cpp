@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <vector>
 #include <iostream>
-#include "../nn/nn.hpp"
+#include "../lib/include/nn.hpp"
 
 
 using namespace std;

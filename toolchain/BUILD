@@ -1,14 +1,15 @@
 load("@rules_cc//cc:defs.bzl", "cc_toolchain")
-load(":m1_mac_arm64_cc_toolchain_config.bzl", "cc_toolchain_config")
+load(":cc_toolchain_config.bzl", "cc_toolchain_config")
+
 
 cc_toolchain_config(
-    name = "m1_mac_arm64_cc_toolchain_config"
+    name = "m1_arm64_cc_toolchain_config"
 )
 
 cc_toolchain(
-    name = "m1_mac_arm64_toolchain",
-    toolchain_identifier = "m1_mac_arm64-toolchain",
-    toolchain_config = ":m1_mac_arm64_cc_toolchain_config",
+    name = "m1_arm64_toolchain",
+    toolchain_identifier = "m1_arm64-toolchain",
+    toolchain_config = ":m1_arm64_cc_toolchain_config",
     all_files = ":empty",
     compiler_files = ":empty",
     dwp_files = ":empty",
@@ -19,8 +20,8 @@ cc_toolchain(
 )
 
 toolchain(
-    name = "cc_toolchain_for_m1_mac_arm64",
-    toolchain = ":m1_mac_arm64_toolchain",
+    name = "cc_toolchain_for_m1_arm64",
+    toolchain = ":m1_arm64_toolchain",
     toolchain_type = "@bazel_tools//tools/cpp:toolchain_type",
 
     exec_compatible_with = [

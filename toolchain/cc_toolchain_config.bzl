@@ -6,19 +6,20 @@ load("@bazel_tools//tools/cpp:cc_toolchain_config_lib.bzl",
     "flag_set",
     "tool_path")
 
-all_link_actions = [ # NEW
-      ACTION_NAMES.cpp_link_executable,
-      ACTION_NAMES.cpp_link_dynamic_library,
-      ACTION_NAMES.cpp_link_nodeps_dynamic_library,
-  ]
+all_link_actions = [
+    ACTION_NAMES.cpp_link_static_library,
+    ACTION_NAMES.cpp_link_executable,
+    ACTION_NAMES.cpp_link_dynamic_library,
+    ACTION_NAMES.cpp_link_nodeps_dynamic_library,
+]
 
 def _impl(ctx):
-    print("Using MacOS Clang toolchain")
+    print("Using M1 ARM 64-bit MacOS Clang Toolchain")
 
     tool_paths = [
         tool_path(
             name = "gcc",
-            path = "/usr/bin/clang++",
+            path = "/usr/bin/clang",
         ),
         tool_path(
             name = "cpp",
@@ -63,9 +64,9 @@ def _impl(ctx):
                     flag_groups = ([
                         flag_group(
                             flags = [
-                                "-std=c++20",
-                                "-Wall",
-                                "-g",  # generate debug symbols
+                                "-std=c++20", # use new c++20 standard
+                                "-Wall",      # show all warnings
+                                "-g",         # generate debug symbols
                                 # "-fPIC",
                                 # "-march=armv8-a",
                             ],
@@ -75,8 +76,7 @@ def _impl(ctx):
             ],
         ),
 
-
-        feature( # NEW
+        feature(
             name = "default_linker_flags",
             enabled = True,
             flag_sets = [
@@ -86,6 +86,9 @@ def _impl(ctx):
                         flag_group(
                             flags = [
                                 "-lstdc++",
+                                "-lopencv_core",
+                                "-lopencv_imgcodecs",
+                                "-lopencv_highgui",
                             ],
                         ),
                     ]),
@@ -100,22 +103,26 @@ def _impl(ctx):
         features = features,
         tool_paths = tool_paths,
 
-        toolchain_identifier = "m1_mac_arm64-toolchain",
+        toolchain_identifier = "m1_arm64-toolchain",
         host_system_name = "local",
         target_system_name = "local",
 
         target_cpu = "darwin_arm64",
         target_libc = "macosx",
 
-        compiler = "clang++",
+        # compiler = "clang++",
+        compiler = "cpp",
 
         abi_version = "darwin_arm64",
         abi_libc_version = "darwin_arm64",
 
         cxx_builtin_include_directories = [
-            "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include",
+            "/Library/Developer/CommandLineTools/usr/lib/clang/16/include",
             "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
             "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks",
+            # opencv lib
+            "/opt/homebrew/opt/opencv/include/opencv4",
+            "/opt/homebrew/opt/opencv/lib",
         ],
     )
 

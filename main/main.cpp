@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <iostream>
-#include "nn.hpp"
+#include "../lib/include/nn.hpp"
 
 using namespace std;
 

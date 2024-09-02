@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <vector>
 #include <iostream>
-#include "../nn/layer.hpp"
+#include "../lib/include/layer.hpp"
 
 
 using namespace std;
@@ -9,7 +9,7 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-    printf("%s:%s:%d \n", __FILE__, __FUNCTION__, __LINE__);
+    printf("%s:%s:%d\n", __FILE__, __FUNCTION__, __LINE__);
 
     Layer *l = new Layer(4, true, 0, "layer 0");
 

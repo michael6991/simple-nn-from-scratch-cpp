@@ -54,6 +54,11 @@
         "fstream": "cpp",
         "iomanip": "cpp",
         "map": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "deque": "cpp",
+        "memory": "cpp",
+        "print": "cpp",
+        "queue": "cpp",
+        "stack": "cpp"
     }
 }

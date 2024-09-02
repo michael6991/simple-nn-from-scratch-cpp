@@ -1,8 +1,7 @@
+load("@rules_cc//cc:defs.bzl", "cc_test")
 
 cc_test(
-    name = "test-cases",
-    srcs = ["test_layer.cpp"],
-    deps = [
-        "//nn:nn-lib"
-    ]
+    name = "mylib_test",
+    srcs = ["mylib_test.cc"],
+    deps = ["//lib:lib-nn"]
 )

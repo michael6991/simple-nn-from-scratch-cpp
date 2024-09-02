@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
-#include "perceptron.hpp"
+#include "../include/perceptron.hpp"
 
 
 // Definition of appropriate equality callback between 2 given mlp.

@@ -3,7 +3,6 @@ bazel-bin/
 bazel-deep-net-cpu/
 bazel-out/
 bazel-testlogs/
-bazel-
 build/
 out/
 MODULE*
@@ -26,6 +25,9 @@ Thumbs.db
 
 # Ignore configuration files with sensitive info
 config.ini
+
+# Ignore MNIST hand written digits dataset directory
+mnist/
 
 # Don't ignore .gitignore itself
 !.gitignore
