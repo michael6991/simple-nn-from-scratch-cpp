@@ -80,6 +80,7 @@ int Layer::copy_vector(const vector<float> &src, vector<mlp_t *> &dst)
         return -1;
     }
     for (auto i = 0; i < src.size(); i++)
+    for (auto i = 0; i < src.size(); i++)
         ((mlp_t *)(dst[i]))->a = src[i];
     return 0;
 }
@@ -113,13 +114,11 @@ void Layer::print_layer(const string content)
 // 3) Transpose the weights matrix (T notation).
 // 4) Do a matrix - vector product and add a vector of biases to the product.
 // 5) Calculate the activation function on each one of the elements in the final product vector:
-//    y = sigma(W^T • x + b)
+//    y = sigma(WTx + b)
 // 
 float Layer::compute_layer()
 {
-    // Organize weights matrix TODO: figure out how to setup dimensions for matrix
-    int rows = n, cols = this->n; // ?? correct ??
-    matrix_f32_t W(rows, col_vecs(n, 0));
+    // vector<float> * x;
 
 
 
