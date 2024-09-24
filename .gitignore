@@ -29,5 +29,7 @@ config.ini
 # Ignore MNIST hand written digits dataset directory
 mnist/
 
+learning_material/
+
 # Don't ignore .gitignore itself
 !.gitignore
