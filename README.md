@@ -1,4 +1,4 @@
-# deep-net-cpu
+# deep_net
 
 To compile:
 clang++ -std=c++20 -o myprogram main.cpp
