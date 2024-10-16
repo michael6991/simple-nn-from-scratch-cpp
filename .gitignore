@@ -1,6 +1,6 @@
 # Ignore build output and other Bazel artifacts
 bazel-bin/
-bazel-deep-net-cpu/
+bazel-deep_net/
 bazel-out/
 bazel-testlogs/
 build/

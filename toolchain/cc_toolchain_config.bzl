@@ -6,12 +6,6 @@ load("@bazel_tools//tools/cpp:cc_toolchain_config_lib.bzl",
     "flag_set",
     "tool_path")
 
-all_link_actions = [
-    ACTION_NAMES.cpp_link_static_library,
-    ACTION_NAMES.cpp_link_executable,
-    ACTION_NAMES.cpp_link_dynamic_library,
-    ACTION_NAMES.cpp_link_nodeps_dynamic_library,
-]
 
 def _impl(ctx):
     print("Using M1 ARM 64-bit MacOS Clang Toolchain")
@@ -65,10 +59,10 @@ def _impl(ctx):
                         flag_group(
                             flags = [
                                 "-std=c++20", # use new c++20 standard
-                                "-Wall",      # show all warnings
                                 "-g",         # generate debug symbols
-                                # "-fPIC",
-                                # "-march=armv8-a",
+                                # include opencv2 headers (opencv2 dir is within opencv4 dir)
+                                # "-Iexternal/opencv/install/include/opencv4",
+                                "-I/Users/mvigdorchik/deep_net/external/opencv/install/include/opencv4",
                             ],
                         ),
                     ]),
@@ -81,11 +75,18 @@ def _impl(ctx):
             enabled = True,
             flag_sets = [
                 flag_set(
-                    actions = all_link_actions,
+                    actions = [
+                        ACTION_NAMES.cpp_link_executable,
+                        ACTION_NAMES.cpp_link_dynamic_library,
+                        ACTION_NAMES.cpp_link_nodeps_dynamic_library,
+                        # ACTION_NAMES.cpp_link_static_library,
+                    ],
                     flag_groups = ([
                         flag_group(
                             flags = [
-                                "-lstdc++",
+                                # -L specifies the directory to search in
+                                # -l specifies the library name (without the "lib" prefix and ".a" suffix), or (*.dylib in Macos case)
+                                "-Lexternal/opencv/install/lib",
                                 "-lopencv_core",
                                 "-lopencv_imgcodecs",
                                 "-lopencv_highgui",
@@ -95,7 +96,6 @@ def _impl(ctx):
                 ),
             ],
         ),
-      
     ]
 
     return cc_common.create_cc_toolchain_config_info(
@@ -110,19 +110,18 @@ def _impl(ctx):
         target_cpu = "darwin_arm64",
         target_libc = "macosx",
 
-        # compiler = "clang++",
-        compiler = "cpp",
+        compiler = "clang++",
 
         abi_version = "darwin_arm64",
         abi_libc_version = "darwin_arm64",
 
         cxx_builtin_include_directories = [
+            # system
             "/Library/Developer/CommandLineTools/usr/lib/clang/16/include",
             "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
             "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks",
-            # opencv lib
-            "/opt/homebrew/opt/opencv/include/opencv4",
-            "/opt/homebrew/opt/opencv/lib",
+            # opencv
+            "/Users/mvigdorchik/deep_net/external/opencv/install/include/opencv4",
         ],
     )
 

@@ -1,23 +1,17 @@
 #include "../include/mnist_loader.hpp"
-// #include <opencv2/opencv.hpp>
-#include "/opt/homebrew/opt/opencv/include/opencv4/opencv2/opencv.hpp"
-
-/**
- * The compilation line that worked:
-*  clang++ a.c -o a.out -g -std=c++17 -I/opt/homebrew/opt/opencv/include/opencv4 -L/opt/homebrew/opt/opencv/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui
- */
+#include "opencv2/opencv.hpp"
 
 
 MNSITLoader::MNSITLoader(const string& path_images, const string& path_labels)
 {
-    this->images_file.open(path_images, ios::in | ios::binary);
-    this->labels_file.open(path_labels, ios::in | ios::binary);
+    this->images_file.open(path_images, std::ios::in | std::ios::binary);
+    this->labels_file.open(path_labels, std::ios::in | std::ios::binary);
 
     if (!images_file.is_open()) {
-        throw runtime_error("File not open: " + path_images);
+        throw std::runtime_error("File not open: " + path_images);
     }
     if (!labels_file.is_open()) {
-        throw runtime_error("File not open: " + path_labels);
+        throw std::runtime_error("File not open: " + path_labels);
     }
 }
 

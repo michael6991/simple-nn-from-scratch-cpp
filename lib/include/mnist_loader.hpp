@@ -11,12 +11,18 @@
 
 #define MNIST_IMAGE_SIZE 748 // 28 x 28
 
+using std::vector;
+using std::string;
+using std::cout;
+using std::cin;
+using std::endl;
+
 class MNSITLoader
 {
     private:
         std::ifstream images_file; // Open file for reading
         std::ifstream labels_file;
-        std::vector<uint8_t> img = std::vector<uint8_t>(MNIST_IMAGE_SIZE);
+        vector<uint8_t> img = vector<uint8_t>(MNIST_IMAGE_SIZE);
 
     public:
         MNSITLoader(const std::string& path_images, const std::string& path_labels);

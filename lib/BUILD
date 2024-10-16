@@ -1,27 +1,25 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
 
 cc_library(
-    name = "libnn",
+    name = "nn",
 
-    # Instead of writing manually all the names:
-    srcs = glob(["src/*.cpp"]),
-    hdrs = glob(["include/*.hpp"]),
-    includes = ["include"],
-    deps = [
-        "@opencv//:opencv_core",
-        "@opencv//:opencv_imgcodecs",
-        "@opencv//:opencv_highgui",
+    srcs = glob([
+        "src/**/*.cpp",
+        "src/**/*.c",
+    ]),
+
+    hdrs = glob([
+        "include/**/*.hpp",
+        "include/**/*.h"
+    ]),
+
+    includes = [
+        "include",
+        "../external/opencv/install/include/opencv4",
     ],
-
-    # copts = [
-    #         "-I/opt/homebrew/opt/opencv/include/opencv4",
-    #         "-L/opt/homebrew/opt/opencv/lib",
-    #         "-lopencv_core",
-    #         "-lopencv_imgcodecs",
-    #         "-lopencv_highgui"],
-
+    deps =[ 
+        "@opencv//:opencv"
+    ],
     visibility = ["//visibility:public"],
-    # "//test:__pkg__",  # private visibility only to tests
-    # "//main:__pkg__"], # private visibility only to main
 )
 

@@ -1,3 +1,5 @@
-register_toolchains(
-    # "//toolchain:cc_toolchain_for_m1_arm64"
+new_local_repository(
+    name = "opencv",
+    path = "external/opencv/install",
+    build_file = "opencv/install/opencv.BUILD",
 )

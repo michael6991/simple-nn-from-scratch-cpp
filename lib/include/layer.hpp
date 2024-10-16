@@ -9,9 +9,11 @@
 #include <string>
 #include <random>
 #include "matrix.hpp"
+#include "perceptron.hpp"
 
 
 using std::vector;
+using std::string;
 
 
 class Layer
@@ -36,11 +38,11 @@ class Layer
             // TODO: take out the random number generator. it should be an input from the hihgher level NN.
 
             // Create a random device to seed the generator
-            random_device rd;
+            std::random_device rd;
             // Create a Mersenne Twister random number engine
-            mt19937 gen(rd());
+            std::mt19937 gen(rd());
             // Create a uniform distribution between 0 and 1
-            uniform_real_distribution<float> dist(0.0, 1.0);
+            std::uniform_real_distribution<float> dist(0.0, 1.0);
 
             // Vector is resized to 'n' elements, all initialized to 0
             x.resize(n);
