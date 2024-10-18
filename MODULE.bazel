@@ -7,5 +7,6 @@
 bazel_dep(name = "platforms", version = "0.0.10")
 
 register_toolchains(
-    "//toolchain:cc_toolchain_for_m1_arm64"
+    # this is commented because ar tool fails to do its job while building with custom toolchain... (that sucks)
+    # "//toolchain:cc_toolchain_for_m1_arm64"
 )

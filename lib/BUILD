@@ -17,9 +17,20 @@ cc_library(
         "include",
         "../external/opencv/install/include/opencv4",
     ],
-    deps =[ 
+    deps =[
         "@opencv//:opencv"
     ],
+
+    copts = [
+        "-std=c++20",
+        "-g",
+        "-Iexternal/opencv/install/include/opencv4",
+        "-Lexternal/opencv/install/lib",
+        "-lopencv_core",
+        "-lopencv_imgcodecs",
+        "-lopencv_highgui",
+    ],
+
     visibility = ["//visibility:public"],
 )
 

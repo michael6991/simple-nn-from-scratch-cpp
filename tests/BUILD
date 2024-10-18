@@ -1,8 +1,9 @@
 
 cc_test(
     name = "test-cases",
-    srcs = ["test_layer.cpp"],
+    srcs = ["test_mnist_loader.cpp"],
     deps = [
-        "//lib:nn"
+        "//lib:nn",
+        "@opencv//:opencv",
     ]
 )

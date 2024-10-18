@@ -1,4 +1,10 @@
 #include "../lib/include/mnist_loader.hpp"
+#include <iostream>
+#include <string>
+
+using std::string;
+using std::cout; using std::cin; using std::cerr; using std::endl;
+using std::exception;
 
 
 int main()
