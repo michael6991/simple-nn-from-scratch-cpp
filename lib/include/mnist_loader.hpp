@@ -28,7 +28,7 @@ class MNSITLoader
         MNSITLoader(const std::string& path_images, const std::string& path_labels);
         ~MNSITLoader();
 
-        // Read image "lazily"
+        // Read an image "lazily"
         void read_mnist_cv();
         uint32_t swap_endian(uint32_t val);
 };

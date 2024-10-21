@@ -17,10 +17,12 @@ cc_library(
         "include",
         "../external/opencv/install/include/opencv4",
     ],
+
     deps =[
         "@opencv//:opencv"
     ],
 
+    # This is here temporarly because the custom toolchain doesnt work properly because of ar tool
     copts = [
         "-std=c++20",
         "-g",

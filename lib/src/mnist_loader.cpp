@@ -33,8 +33,7 @@ void MNSITLoader::read_mnist_cv()
     this->images_file.read(reinterpret_cast<char *>(&magic), 4);
     magic = swap_endian(magic);
     if(magic != 2051){
-        cout << "Incorrect image file magic: " << magic << endl;
-        return;
+        throw std::runtime_error("Incorrect image file magic: " + std::to_string(magic));
     } else {
         cout << "Correct image magic: " << magic << endl;
     }
@@ -42,11 +41,9 @@ void MNSITLoader::read_mnist_cv()
     this->labels_file.read(reinterpret_cast<char *>(&magic), 4);
     magic = swap_endian(magic);
     if(magic != 2049){
-        cout << "Incorrect label file magic: " << magic << endl;
-        return;
+        throw std::runtime_error("Incorrect label file magic: " + std::to_string(magic));
     } else {
         cout << "Correct label magic: " << magic << endl;
-        return;
     }
 
     this->images_file.read(reinterpret_cast<char *>(&num_items), 4);
@@ -54,17 +51,19 @@ void MNSITLoader::read_mnist_cv()
     this->labels_file.read(reinterpret_cast<char *>(&num_labels), 4);
     num_labels = swap_endian(num_labels);
     if(num_items != num_labels){
-        cout << "Number of images in images file should equal to number of labels in labels file" << endl;
-        return;
+        throw std::runtime_error("Number of images in images file should equal to number of labels in labels file");
     } else {
-        cout << "Number of images equals to number of labels: " << num_items <<endl;
+        cout << "Number of images equals to number of labels: " << num_items << endl;
     }
 
     this->images_file.read(reinterpret_cast<char *>(&rows), 4);
     rows = swap_endian(rows);
-    this->labels_file.read(reinterpret_cast<char *>(&cols), 4);
+    this->images_file.read(reinterpret_cast<char *>(&cols), 4);
     cols = swap_endian(cols);
     cout << "Image rows:  "<< rows << ", cols: " << cols << endl;
+    if (rows != cols) {
+        throw std::runtime_error("Number of rows not equal to number of columns");
+    }
 
     char label = 0;
     char* pixels = new char[rows * cols];
