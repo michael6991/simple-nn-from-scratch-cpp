@@ -68,7 +68,7 @@ void MNSITLoader::read_mnist_cv()
     char label = 0;
     char* pixels = new char[rows * cols];
 
-    for (int item_id = 0; item_id < num_items; ++item_id) 
+    for (int i = 0; i < num_items; ++i) 
     {
         // read image pixel
         this->images_file.read(pixels, rows * cols);
@@ -88,6 +88,24 @@ void MNSITLoader::read_mnist_cv()
 
     delete[] pixels;
 }
+
+/**
+ * Seek to and read the i'th image in the sequence of images within images file.
+ * The 28x28 image will be read into the given ouptut pointer.
+ * Index should be >= 0
+ */
+void MNSITLoader::read_img(char* out, uint32_t index)
+{
+    char label = 0;
+    char * pixels = new char[MNIST_IMAGE_SIZE];
+
+    // Seek to the required image according to full 28 byte jumps
+    this->images_file.seekg(index * MNIST_IMAGE_SIZE);
+
+    this->images_file.read(pixels, MNIST_IMAGE_SIZE);
+    out = pixels;
+}
+
 
 
 MNSITLoader::~MNSITLoader()

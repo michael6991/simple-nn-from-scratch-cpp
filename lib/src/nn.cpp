@@ -115,7 +115,7 @@ int FullyConnectedNetwork::backprop()
 }
 
 
-Layer * FullyConnectedNetwork::add_layer(uint32_t n, bool init_random, uint32_t layer_num,  string layer_name)
+Layer* FullyConnectedNetwork::add_layer(uint32_t n, bool init_random, uint32_t layer_num,  string layer_name)
 {
     if (n == 0) {
         printf("cannot add new layer with 0 perceptrons\n");

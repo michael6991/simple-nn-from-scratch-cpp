@@ -9,6 +9,8 @@
 #include <stdexcept>
 #include <stdint.h>
 
+#define MNIST_ROWS 28
+#define MNIST_COLS 28
 #define MNIST_IMAGE_SIZE 748 // 28 x 28
 
 using std::vector;
@@ -30,6 +32,7 @@ class MNSITLoader
 
         // Read an image "lazily"
         void read_mnist_cv();
+        void read_img(char* out, uint32_t index);
         uint32_t swap_endian(uint32_t val);
 };
 
