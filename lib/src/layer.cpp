@@ -6,9 +6,7 @@ using namespace std;
 // Return the sigmoid result of x.
 // x can be positive or negative float.
 // The result is bound to be between [0, 1].
-float sigmoid(float x){
-    return 1 / (1 + exp(-x));
-}
+float sigmoid(float x){ return 1 / (1 + exp(-x)); }
 
 // Return the rectified linear unit of x. (ReLU)
 // This is a sort of activation function that is easier to compute
@@ -22,27 +20,16 @@ float sigmoid(float x){
  *            
  *  ReLU(x) = {x if x > 0, else 0 if x<= 0}
  */
-float relu(float x){
-    return max(float(0), x);
-}
+float relu(float x){ return max(float(0), x); }
 
-string Layer::get_name(){
-    return this->name;
-}
+string Layer::get_name(){ return this->name; }
 
+uint32_t Layer::get_n(){ return this->n; }
 
-uint32_t Layer::get_n(){
-    return this->n;
-}
-
-
-uint32_t Layer::get_num_edges(){
-    return this->edges;
-}
-
+uint32_t Layer::get_num_edges(){ return this->edges; }
 
 // Copy constructor implementation
-Layer::Layer(const Layer &other)
+Layer::Layer(const Layer& other)
 {
     // Copy each member of other to this
     this->n = other.n;
@@ -60,7 +47,7 @@ Layer::Layer(const Layer &other)
 
 
 template <class T>
-int Layer::copy_vector(const vector<T> &src, vector<T> &dst)
+int Layer::copy_vector(const vector<T>& src, vector<T>& dst)
 {
     // TODO: check type equality
     // that's actually a deep copy. New memory is allocated for dst vector
@@ -69,19 +56,22 @@ int Layer::copy_vector(const vector<T> &src, vector<T> &dst)
 
 
 // Copy float src input to destination input (perceptrons)
-int Layer::copy_vector(const vector<float> &src, vector<mlp_t *> &dst)
+int Layer::copy_vector(const vector<float>& src, vector<mlp_t* >& dst)
 {
     if (dst.size() == 0 || src.size() == 0) {
         printf("size of src or dst vector is 0\n");
         return -1;
     }
+
     if (dst.size() != src.size()) {
         printf("sizes of vectors don't match\n");
         return -1;
     }
+
     for (auto i = 0; i < src.size(); i++)
     for (auto i = 0; i < src.size(); i++)
-        ((mlp_t *)(dst[i]))->a = src[i];
+        ((mlp_t* )(dst[i]))->a = src[i];
+
     return 0;
 }
 

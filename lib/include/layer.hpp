@@ -11,10 +11,8 @@
 #include "matrix.hpp"
 #include "perceptron.hpp"
 
-
 using std::vector;
 using std::string;
-
 
 class Layer
 {
@@ -81,8 +79,8 @@ class Layer
         }
     
         template <class T>
-        int copy_vector(const vector<T> &src, vector<T> &dst);
-        int copy_vector(const vector<float> &src, vector<mlp_t *> &dst);
+        int copy_vector(const vector<T>& src, vector<T>& dst);
+        int copy_vector(const vector<float>& src, vector<mlp_t* >& dst);
         float compute_layer();
         float grad_descent();
         void print_layer(const string content);
@@ -93,4 +91,4 @@ class Layer
 };
 
 
-#endif /* __LAYER_H__ */
+#endif

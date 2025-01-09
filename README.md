@@ -1,4 +1,4 @@
-# deep_net
+# Simple NN from Scratch C++20
 
 To compile:
 clang++ -std=c++20 -o myprogram main.cpp

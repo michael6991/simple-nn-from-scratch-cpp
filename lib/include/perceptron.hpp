@@ -7,7 +7,7 @@
 typedef struct perceptron mlp_t;  // multi-layer perceptron
 
 struct perceptron {
-    std::vector<mlp_t *> next_layer_perc;  // Pointers to next layer perceptrons
+    std::vector<mlp_t* > next_layer_perc;  // Pointers to next layer perceptrons
     float w;                               // Weight
     float b;                               // Bias
     float a;                               // Input
@@ -16,7 +16,7 @@ struct perceptron {
 
 
 // Function declarations
-mlp_t * mlp_create(bool init_random);
+mlp_t* mlp_create(bool init_random);
 int perc_eq (const void *p1, const void *p2);
 
-#endif /* __PERCEPTRON_H__ */
+#endif

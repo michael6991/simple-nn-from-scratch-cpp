@@ -18,11 +18,11 @@ int perc_eq (const void *p1, const void *p2)
 
 
 // Create a single perceptron unit and intialize it
-mlp_t * mlp_create(bool init_random)
+mlp_t* mlp_create(bool init_random)
 {
     // Basic initialization
-    mlp_t *p;
-    p = (mlp_t *)malloc(sizeof(*p));
+    mlp_t* p;
+    p = (mlp_t* )malloc(sizeof(*p));
 
     if (p == nullptr) {
         printf("Error creating mlp with malloc\n");

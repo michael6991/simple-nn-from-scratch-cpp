@@ -40,4 +40,4 @@ class MNSITLoader
 
 
 
-#endif /* __MNIST_LOADER__ */
+#endif

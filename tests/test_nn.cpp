@@ -9,7 +9,7 @@ using namespace std;
 
 int main()
 {
-    FullyConnectedNetwork * nn = new FullyConnectedNetwork();
+    FullyConnectedNetwork* nn = new FullyConnectedNetwork();
 
     nn->add_layer(4, false, 0, "input");
     nn->add_layer(3, true,  1, "hidden-1");

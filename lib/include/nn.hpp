@@ -11,7 +11,7 @@ class FullyConnectedNetwork
 {
     private:
         uint32_t depth = 0;         // Network depth
-        std::vector<Layer *> layers;     // input layer & hidden layers & output layer
+        std::vector<Layer* > layers;     // input layer & hidden layers & output layer
         // Layer * in = nullptr;    // convinience pointer to input layer
         // Layer * out = nullptr;   // convinience pointer to output layer
 
@@ -36,8 +36,8 @@ class FullyConnectedNetwork
         int backprop();
 
         // add fully connected layer with a given number of mlps
-        Layer * add_layer(uint32_t n, bool init_random, uint32_t layer_num,  std::string layer_name);
+        Layer* add_layer(uint32_t n, bool init_random, uint32_t layer_num,  std::string layer_name);
 };
 
 
-#endif /* __FULLY_CONNECTED_NETWORK_H__ */
+#endif

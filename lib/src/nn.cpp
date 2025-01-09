@@ -30,7 +30,7 @@ FullyConnectedNetwork::FullyConnectedNetwork()
 
 
 // Copy constructor
-FullyConnectedNetwork::FullyConnectedNetwork(const FullyConnectedNetwork &other)
+FullyConnectedNetwork::FullyConnectedNetwork(const FullyConnectedNetwork& other)
 {
     // Copy layers (deep copy)
 }
